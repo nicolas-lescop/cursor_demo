@@ -1,0 +1,86 @@
+# Docker Compose for Development with Hot Reload
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: prompts_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d prompts_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://user:password@postgres:5432/prompts_db
+      NODE_ENV: development
+    volumes:
+      # Mount source code for hot reload
+      - ./apps/backend/src:/app/apps/backend/src:delegated
+      - ./apps/backend/tsconfig.json:/app/apps/backend/tsconfig.json:ro
+      - ./apps/backend/nest-cli.json:/app/apps/backend/nest-cli.json:ro
+      - ./packages/shared:/app/packages/shared:delegated
+      # Persist node_modules to avoid reinstalling on each rebuild
+      - backend_node_modules:/app/node_modules
+      - backend_app_node_modules:/app/apps/backend/node_modules
+    networks:
+      - app-network
+    # Enable polling for file changes (needed for some systems)
+    command: [ "pnpm", "run", "dev" ]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile.dev
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+    environment:
+      NODE_ENV: development
+      # Backend API URL for SSR (internal Docker network)
+      INTERNAL_API_URL: http://backend:3000
+      # Backend API URL accessible from browser
+      VITE_API_URL: http://localhost:3000
+    volumes:
+      # Mount source code for hot reload
+      - ./apps/frontend/app:/app/apps/frontend/app:delegated
+      - ./apps/frontend/vite.config.ts:/app/apps/frontend/vite.config.ts:ro
+      - ./apps/frontend/tsconfig.json:/app/apps/frontend/tsconfig.json:ro
+      - ./apps/frontend/tailwind.config.js:/app/apps/frontend/tailwind.config.js:ro
+      - ./apps/frontend/postcss.config.js:/app/apps/frontend/postcss.config.js:ro
+      - ./packages/shared:/app/packages/shared:delegated
+      # Persist node_modules to avoid reinstalling on each rebuild
+      - frontend_node_modules:/app/node_modules
+      - frontend_app_node_modules:/app/apps/frontend/node_modules
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  backend_node_modules:
+  backend_app_node_modules:
+  frontend_node_modules:
+  frontend_app_node_modules:
+
+
+networks:
+  app-network:
+    driver: bridge

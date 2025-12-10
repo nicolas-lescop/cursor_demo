@@ -1,0 +1,44 @@
+{
+    "common": {
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "saving": "Enregistrement...",
+        "create": "Créer",
+        "creating": "Création...",
+        "delete": "Supprimer",
+        "deleting": "Suppression...",
+        "search": "Rechercher",
+        "clear": "Effacer",
+        "reset": "Réinitialiser",
+        "characters": "caractères",
+        "reduce": "Réduire",
+        "expand": "Agrandir"
+    },
+    "home": {
+        "title": "Mes Prompts",
+        "subtitle": "Gérez et organisez vos prompts favoris",
+        "searchPlaceholder": "Rechercher des prompts...",
+        "searchResultsFor": "Résultats pour \"{{query}}\"",
+        "favoritesOnly": "Favoris uniquement",
+        "allPrompts": "Tous les prompts",
+        "noPromptsFound": "Aucun prompt trouvé pour \"{{query}}\"",
+        "noPromptsYet": "Aucun prompt trouvé. Créez votre premier prompt !"
+    },
+    "prompt": {
+        "new": "Nouveau Prompt",
+        "createTitle": "Créer un nouveau prompt",
+        "createDescription": "Ajoutez un titre et le contenu de votre prompt. Supporte le Markdown.",
+        "createButton": "Créer le prompt",
+        "editTitle": "Modifier le prompt",
+        "editDescription": "Modifiez le titre et le contenu de votre prompt.",
+        "deleteTitle": "Supprimer le prompt",
+        "deleteDescription": "Êtes-vous sûr de vouloir supprimer le prompt \"{{title}}\" ? Cette action est irréversible.",
+        "nameLabel": "Nom du prompt",
+        "namePlaceholder": "Ex: Assistant de code Python",
+        "contentLabel": "Contenu du prompt",
+        "contentPlaceholder": "Écrivez votre prompt ici...\n\nConseils pour un bon prompt :\n- Soyez précis et descriptif\n- Utilisez des exemples si nécessaire\n- Structurez avec des sections (## Titre)\n\nSupporte le format Markdown pour une meilleure lisibilité.",
+        "contentPlaceholderSimple": "Écrivez votre prompt ici...",
+        "addToFavorites": "Ajouter aux favoris",
+        "removeFromFavorites": "Retirer des favoris"
+    }
+}

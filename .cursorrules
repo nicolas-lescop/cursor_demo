@@ -1,0 +1,24 @@
+# Cursor Rules
+
+## Project Context
+- Monorepo using Turborepo and pnpm.
+- Backend: NestJS, Hexagonal Architecture, Drizzle ORM, PostgreSQL.
+- Frontend: React, Vite, TanStack Start (SSR).
+- Shared: Zod schemas in `packages/shared`.
+
+## Coding Standards
+- **Backend**:
+  - Follow Hexagonal Architecture: Domain -> Application -> Infrastructure.
+  - Use Drizzle for all DB interactions.
+  - Use Zod for validation.
+- **Frontend**:
+  - Use Functional Components with Hooks.
+  - Use TanStack Query for data fetching.
+  - Use TailwindCSS for styling.
+- **General**:
+  - TypeScript strict mode enabled.
+  - Prefer `const` over `let`.
+  - Use async/await.
+
+## Docker
+- Ensure all services can run via Docker Compose.

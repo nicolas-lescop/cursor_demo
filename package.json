@@ -1,0 +1,32 @@
+{
+  "name": "cursor-demo-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:dev:detach": "docker-compose -f docker-compose.dev.yml up --build -d",
+    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "docker:dev:logs": "docker-compose -f docker-compose.dev.yml logs -f",
+    "docker:prod": "docker-compose up --build"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "zod": "3.24.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "zod": "3.24.4",
+      "esbuild": "0.25.12"
+    }
+  }
+}

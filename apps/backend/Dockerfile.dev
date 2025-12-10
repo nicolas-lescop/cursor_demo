@@ -1,0 +1,32 @@
+FROM node:20-alpine
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+# Install dependencies for the monorepo structure
+COPY package.json pnpm-workspace.yaml ./
+COPY pnpm-lock.yaml ./
+COPY turbo.json ./
+
+# Copy package.json files for all workspaces to install dependencies
+COPY apps/backend/package.json ./apps/backend/
+COPY packages/shared/package.json ./packages/shared/
+COPY packages/shared/tsconfig.json ./packages/shared/
+
+# Install all dependencies
+RUN pnpm install
+
+# Copy shared package source and build it
+COPY packages/shared/src ./packages/shared/src
+RUN cd packages/shared && pnpm run build
+
+# Source code for backend will be mounted as volumes
+WORKDIR /app/apps/backend
+
+EXPOSE 3000
+
+# Run NestJS in watch mode for hot reload
+CMD ["pnpm", "run", "dev"]
+
