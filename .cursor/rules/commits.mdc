@@ -1,0 +1,23 @@
+---
+description: Conventional commits
+alwaysApply: true
+---
+
+conventional_commits:
+examples: - 'feat(auth): add jwt authentication' - 'fix(api): resolve user creation error' - 'docs(readme): update installation steps'
+format: - '<type>(<scope>): <description>' - <summary>
+rules: - Use conventional commit format - Keep messages professional and concise - Maximum 72 characters for description - Use lowercase for all text - Use imperative mood (add not added) - Use the summary to describe the changes in a multiples lines
+types:
+chore: Maintenance tasks
+ci: CI/CD related changes
+docs: Documentation changes
+feat: A new feature
+fix: A bug fix
+perf: Performance improvements
+refactor: Code refactoring
+style: Code style changes
+test: Adding or updating tests
+language_rules:
+examples: - '// Good: Calculate total price' - '// Bad: Calculer le prix total' - '// Good: getUserById()' - '// Bad: obtenirUtilisateurParId()' - '// Good: README.md in English' - '// Bad: README.md in French'
+format: All code, documentation and comments must be written in English
+rules: - All code must be written in English - All documentation (README, docs, etc.) must be written in English - All comments in code must be written in English - All variable names, function names, and class names must use English terms - All commit messages must be written in English

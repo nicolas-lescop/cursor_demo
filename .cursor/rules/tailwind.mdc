@@ -1,0 +1,9 @@
+---
+description: Tailwind
+globs: *.tsx,*.vue,*.css,*.scss
+alwaysApply: false
+---
+
+- Uses the principles of Tailwind v4
+- Avoid `space-y-n` and use `flex gap-n` with `flex-col` if needed
+- Avoid `bg-white bg-opacity-50` and use `bg-white/50`

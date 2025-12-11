@@ -1,0 +1,49 @@
+---
+description: README.md standards
+globs: */README.md
+alwaysApply: false
+---
+
+# README Standards
+
+## Context
+
+- When creating or updating project documentation
+- When adding new features or dependencies
+- When changing project structure
+- When updating installation or usage instructions
+
+## Requirements
+
+### Core Structure
+
+- Title and Description
+
+  - Project name
+  - Clear, concise description of purpose
+
+- Getting Started
+
+  - Prerequisites
+  - Installation steps
+  - Environment setup
+  - Configuration
+
+- Development
+
+  - Testing procedures
+  - Contribution guidelines
+  - Code style guide
+  - Branch naming conventions
+
+- Project Structure
+
+  - Directory layout
+  - Key files and their purposes
+  - Architecture overview
+
+### Formatting
+
+- Use proper Markdown syntax
+- Include syntax highlighting for code blocks
+- Use relative links for internal references
