@@ -1,8 +1,10 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
+import { Outlet, createRootRoute, HeadContent, Scripts, Link } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import '../globals.css'
 import '../i18n'
+import { AuthProvider } from '../components/AuthProvider'
+import { UserMenu } from '../components/UserMenu'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -20,9 +22,11 @@ export const Route = createRootRoute({
 function RootComponent() {
     return (
         <QueryClientProvider client={queryClient}>
-            <RootDocument>
-                <Outlet />
-            </RootDocument>
+            <AuthProvider>
+                <RootDocument>
+                    <Outlet />
+                </RootDocument>
+            </AuthProvider>
         </QueryClientProvider>
     )
 }
@@ -34,11 +38,13 @@ function RootDocument({ children }: { children: ReactNode }) {
                 <HeadContent />
             </head>
             <body suppressHydrationWarning>
-                <div className="p-2 flex gap-2 text-lg">
-                    <h1 className="font-bold">Prompt Manager</h1>
+                <div className="p-4 flex items-center justify-between border-b">
+                    <Link to="/" className="text-lg font-bold hover:opacity-80">
+                        Prompt Manager
+                    </Link>
+                    <UserMenu />
                 </div>
-                <hr />
-                <div className="p-2">{children}</div>
+                <div className="p-4">{children}</div>
                 <Scripts />
             </body>
         </html>

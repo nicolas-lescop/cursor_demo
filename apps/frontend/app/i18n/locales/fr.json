@@ -12,7 +12,32 @@
         "reset": "Réinitialiser",
         "characters": "caractères",
         "reduce": "Réduire",
-        "expand": "Agrandir"
+        "expand": "Agrandir",
+        "loading": "Chargement..."
+    },
+    "auth": {
+        "login": "Connexion",
+        "loginTitle": "Se connecter",
+        "loginDescription": "Entrez vos identifiants pour accéder à votre compte",
+        "loginButton": "Se connecter",
+        "loggingIn": "Connexion...",
+        "register": "Inscription",
+        "registerTitle": "Créer un compte",
+        "registerDescription": "Créez un nouveau compte pour commencer",
+        "registerButton": "S'inscrire",
+        "registering": "Inscription...",
+        "logout": "Déconnexion",
+        "email": "Email",
+        "emailPlaceholder": "exemple@email.com",
+        "password": "Mot de passe",
+        "passwordPlaceholder": "••••••••",
+        "displayName": "Nom d'affichage",
+        "displayNamePlaceholder": "Votre nom (optionnel)",
+        "noAccount": "Pas de compte ?",
+        "haveAccount": "Déjà un compte ?",
+        "createAccount": "Créer un compte",
+        "signIn": "Se connecter",
+        "welcome": "Bienvenue, {{name}}"
     },
     "home": {
         "title": "Mes Prompts",

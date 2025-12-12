@@ -5,6 +5,7 @@ import { PromptController } from './infrastructure/controllers/prompt.controller
 import { PromptService } from './application/prompt.service';
 import { DrizzlePromptRepository } from './infrastructure/repositories/drizzle-prompt.repository';
 import { PROMPT_REPOSITORY } from './domain/prompt/prompt.repository.port';
+import { AuthModule } from './auth.module';
 
 @Module({
     imports: [
@@ -12,6 +13,7 @@ import { PROMPT_REPOSITORY } from './domain/prompt/prompt.repository.port';
             isGlobal: true,
         }),
         DrizzleModule,
+        AuthModule,
     ],
     controllers: [PromptController],
     providers: [
@@ -22,4 +24,4 @@ import { PROMPT_REPOSITORY } from './domain/prompt/prompt.repository.port';
         },
     ],
 })
-export class AppModule { }
+export class AppModule {}

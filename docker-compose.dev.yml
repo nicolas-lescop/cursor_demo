@@ -29,6 +29,11 @@ services:
     environment:
       DATABASE_URL: postgres://user:password@postgres:5432/prompts_db
       NODE_ENV: development
+      JWT_ACCESS_SECRET: dev-access-secret-change-in-production
+      JWT_REFRESH_SECRET: dev-refresh-secret-change-in-production
+      JWT_ACCESS_DURATION: 900
+      JWT_REFRESH_DURATION: 604800
+      BCRYPT_SALT_ROUNDS: 10
     volumes:
       - ./apps/backend/src:/app/apps/backend/src:delegated
       - ./apps/backend/tsconfig.json:/app/apps/backend/tsconfig.json:ro

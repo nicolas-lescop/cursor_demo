@@ -24,6 +24,11 @@ services:
       - postgres
     environment:
       DATABASE_URL: postgres://user:password@postgres:5432/prompts_db
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_ACCESS_DURATION: ${JWT_ACCESS_DURATION:-900}
+      JWT_REFRESH_DURATION: ${JWT_REFRESH_DURATION:-604800}
+      BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS:-12}
     networks:
       - app-network
 
